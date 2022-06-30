@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Our IN Bank</title>
+    <link rel="icon" type="image/x-icon" href="diamond.png">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="form-parent">
+        <span class="form-errorMsg">You have entered wrong password!</span>
+        <div class="form-subparent">
+            <div class="form-left"><img class="form-image" src="img.png" /></div>
+            <form id="form" class="form-right-parent">
+                <input class="form-right input-username" id="username" type="text" placeholder="Enter Username"
+                    required />
+                <br />
+                <input class="form-right input-password" id="password" type="password" placeholder="Enter Pin"
+                    required />
+                <br />
+                <button class="form-right form-btn" type="submit">Login</button>
+            </form>
+            <span class="help">?</span>
+        </div>
+
+    </div>
+
+    <div class="home-parent">
+        <main>
+            <nav class="nav">
+                <span class="name">Romil Jain</span>
+                <img style="width:40px; height:40px" src="diamond.png" />
+                <span class="logout">Logout</span>
+            </nav>
+
+            <div class="layout">
+
+                <div>
+                    <!-- Right side interface-->
+
+                    <!-- Transfer money-->
+                    <div class="transfer-money">
+                        <div>Transfer money</div>
+                        <form class="tmForm">
+                            <div>
+                                <input class="tmUsername" />
+                                <br />
+                                <label>Username</label>
+                            </div>
+                            <div>
+                                <input class="tmAmount" />
+                                <br />
+                                <label>Amount</label>
+                            </div>
+                            <button type="submit">&#8594</button>
+                        </form>
+                    </div>
+
+                    <!-- Request Loan-->
+                    <div class="ask-loan">
+                        <div>Ask Loan</div>
+                        <form class="alForm">
+                            <div>
+                                <input class="alAmount" />
+                                <br />
+                                <label>Amount</label>
+                            </div>
+                            <button type="submit">&#8594</button>
+                        </form>
+                    </div>
+
+                    <!-- Cancel account-->
+                    <div class="delete-account">
+                        <div>Delete account</div>
+                        <form class="dcForm">
+                            <div>
+                                <input class="dcUsername" />
+                                <br />
+                                <label>Confirm User</label>
+                            </div>
+                            <div>
+                                <input class="dcPassword" />
+                                <br />
+                                <label>Confirm Pin</label>
+                            </div>
+                            <button type="submit">&#8594</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <!---- user info ----->
+                    <div class="activeAccountBalance1">
+                        Total Balance: <span class="activeAccountBalance">20000</span>
+                    </div>
+
+                    <!---- movements ----->
+                    <div class="movements">
+                        <div class="movements_row">
+                            <span class="movements_number">1</span>
+                            <span class="movements_type_deposit">deposit</span>
+                            <span class="movements_date">23/06/1999 13:34</span>
+                            <span class="movements_value">800</span>
+                        </div>
+                    </div>
+
+                    <!---- total summary ----->
+                    <div class="summary">
+                        <div>
+                            <span>Deposits</span>
+                            <span class="deposit">1</span>
+                        </div>
+                        <div>
+                            <span>Withdraws</span>
+                            <span class="withdraw">-2</span>
+                        </div>
+                        <div>
+                            <span>Intrest</span>
+                            <span class="intrest"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer></footer>
+        </main>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal">
+        <div class="modal-box">
+               <div class="modal-parent">
+                <div><b>We are here to help you ☺️ !</b></div>
+                <span style="margin-top:1rem">We have a few dummy accounts for you!!!</span>
+                <ol style="margin-left:2rem; margin-top:1rem">
+                    <li>John</li>
+                    <li>Romil</li>
+                    <li>Kath</li>
+                    <li>David</li>
+                </ol>
+                <div style="color:blue; margin-left:0.8rem;margin-top:0.5rem">Please use 0000 as a pin for all accounts</div>
+                <div style="margin-top:1rem">Note: </div>
+                <span style="margin-top:0.5rem"> 1. You can switch between accounts.</span>
+                <span style="margin-top:0.5rem"> 2. Transfer fake money from one account to another account (above accounts).</span>
+                <span style="margin-top:0.5rem"> 3. Ask for loan.</span>
+                <span style="margin-top:0.5rem"> 4. Close an account.</span>
+
+                <div><button class="modal-btn">Close</button></div>
+               </div>
+        </div>
+    </div>
+
+    <!-- notifcation -->
+
+    <div class="notification">
+    <span class="notification-inner"></span>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</htm>
