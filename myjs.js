@@ -9,7 +9,7 @@ const romil = [
     },
     {
         number: 2,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '22/06/2021 2:16',
         amount: 2000,
     },
@@ -21,18 +21,24 @@ const romil = [
     },
     {
         number: 4,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '9/07/2021 9:30',
         amount: 1000,
     },
     {
         number: 5,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '15/07/2021 9:30',
         amount: 5000,
     },
     {
         number: 6,
+        type: 'deposit',
+        time: '24/07/2021 9:30',
+        amount: 5000,
+    },
+    {
+        number: 7,
         type: 'deposit',
         time: '24/07/2021 9:30',
         amount: 5000,
@@ -48,19 +54,19 @@ const john = [
     },
     {
         number: 2,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '22/06/2021 2:16',
         amount: 500,
     },
     {
         number: 3,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '23/06/2021 5:35',
         amount: 1000,
     },
     {
         number: 4,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '9/07/2021 9:30',
         amount: 5000,
     },
@@ -76,6 +82,12 @@ const john = [
         time: '24/07/2021 1:30',
         amount: 4000,
     },
+    {
+        number: 7,
+        type: 'deposit',
+        time: '24/07/2021 9:30',
+        amount: 5000,
+    },
 ];
 
 const david = [
@@ -87,7 +99,7 @@ const david = [
     },
     {
         number: 2,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '22/06/2021 2:16',
         amount: 8000,
     },
@@ -99,13 +111,13 @@ const david = [
     },
     {
         number: 4,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '9/07/2021 9:30',
         amount: 11000,
     },
     {
         number: 5,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '15/07/2021 9:30',
         amount: 1000,
     },
@@ -114,6 +126,12 @@ const david = [
         type: 'deposit',
         time: '24/07/2021 9:30',
         amount: 8000,
+    },
+    {
+        number: 7,
+        type: 'deposit',
+        time: '24/07/2021 9:30',
+        amount: 5000,
     },
 ];
 
@@ -126,7 +144,7 @@ const kath = [
     },
     {
         number: 2,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '22/06/2021 2:16',
         amount: 2000,
     },
@@ -138,13 +156,13 @@ const kath = [
     },
     {
         number: 4,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '9/07/2021 9:30',
         amount: 12000,
     },
     {
         number: 5,
-        type: 'withdraw',
+        type: 'withdrawal',
         time: '15/07/2021 9:30',
         amount: 500,
     },
@@ -153,6 +171,12 @@ const kath = [
         type: 'deposit',
         time: '24/07/2021 9:30',
         amount: 9000,
+    },
+    {
+        number: 7,
+        type: 'deposit',
+        time: '24/07/2021 9:30',
+        amount: 5000,
     },
 ];
 
@@ -209,14 +233,14 @@ const findUserPosition = function (uservalue) {
     }
 }
 
-const showNotification = (text, type) =>{
-    notificationInner.textContent=text;
+const showNotification = (text, type) => {
+    notificationInner.textContent = text;
     notificationInner.setAttribute('class', `${type}-notification`);
 
- setTimeout(()=>{
-    notificationInner.textContent='';
-    notificationInner.removeAttribute('class', `${type}-notification`);
- },2000);
+    setTimeout(() => {
+        notificationInner.textContent = '';
+        notificationInner.removeAttribute('class', `${type}-notification`);
+    }, 2500);
 
 }
 
@@ -262,7 +286,7 @@ const displayMovements = function (userdata) {
             depositAmount = depositAmount + d.amount;
             totalAmount = totalAmount + d.amount;
         }
-        else if (d.type == "withdraw") {
+        else if (d.type == "withdrawal") {
             withdrawAmount = withdrawAmount + d.amount;
             totalAmount = totalAmount - d.amount;
         }
@@ -289,32 +313,40 @@ tmForm.addEventListener(('submit'), (e) => {
 
     if (usersNameData.includes(tmUsername.value)) {
 
-        let user = findUserPosition(tmUsername.value.toLowerCase());
+        if (!isNaN(tmAmount.value)) {
+            let user = findUserPosition(tmUsername.value.toLowerCase());
 
-        usersData[user].push({
-            number: usersData[user].length + 1,
-            type: 'deposit',
-            time: '23/06/2022 13:34',
-            amount: Number(tmAmount.value),
-        })
+            if (Number(tmAmount.value) <= Number(activeAccountBalance.textContent)) {
+                usersData[user].push({
+                    number: usersData[user].length + 1,
+                    type: 'deposit',
+                    time: '23/06/2022 13:34',
+                    amount: Number(tmAmount.value),
+                })
 
 
-        activeAccount.push({
-            number: activeAccount.length + 1,
-            type: 'withdraw',
-            time: '23/06/2022 13:34',
-            amount: Number(tmAmount.value),
-        })
+                activeAccount.push({
+                    number: activeAccount.length + 1,
+                    type: 'withdrawal',
+                    time: '23/06/2022 13:34',
+                    amount: Number(tmAmount.value),
+                })
 
-        showNotification(`Successfully sent ${tmAmount.value} to ${tmUsername.value}!`, 'success');
+                showNotification(`Successfully sent ${tmAmount.value} to ${tmUsername.value}!`, 'success');
 
-        tmUsername.value = "";
-        tmAmount.value = "";
+                tmUsername.value = "";
+                tmAmount.value = "";
 
-        displayMovements(activeAccount);
+                displayMovements(activeAccount);
+            } else {
+                showNotification("Amount limit exceeded!", 'error');
+            }
+        } else {
+            showNotification("Amount is not a Number!", 'error');
+        }
     }
     else {
-       showNotification("Account doesn't exist!", 'error');
+        showNotification("Account doesn't exist!", 'error');
     }
 })
 
@@ -322,18 +354,22 @@ tmForm.addEventListener(('submit'), (e) => {
 alForm.addEventListener(('submit'), (e) => {
     e.preventDefault();
 
-    activeAccount.push({
-        number: activeAccount.length + 1,
-        type: 'deposit',
-        time: '23/06/2022 13:34',
-        amount: Number(alAmount.value),
-    })
+    if (!isNaN(alAmount.value)) {
+        activeAccount.push({
+            number: activeAccount.length + 1,
+            type: 'deposit',
+            time: '23/06/2022 13:34',
+            amount: Number(alAmount.value),
+        })
 
-    showNotification(`Dear Customer, your account XX67 has been credited with ${alAmount.value}!`, 'success');
+        showNotification(`Dear Customer, your account XX67 has been credited with ${alAmount.value}!`, 'success');
 
-    alAmount.value = "";
+        alAmount.value = "";
 
-    displayMovements(activeAccount);
+        displayMovements(activeAccount);
+    } else {
+        showNotification("Amount is not a Number!", 'error');
+    }
 })
 
 
@@ -349,12 +385,15 @@ dcForm.addEventListener(('submit'), (e) => {
         logoutFunc();
         showNotification(`${dcUsername.value}'s account has been deleted successfully!`, 'success');
     }
-    else if(dcUsername.value != username.value){
+    else if (dcUsername.value != username.value) {
         showNotification(`Account doesn't exists!`, 'error');
     }
-    else{
+    else {
         showNotification(`Your pin is incorrect!`, 'error');
     }
+
+    dcUsername.value = "";
+    dcPassword.value="";
 })
 
 const logoutFunc = function () {
@@ -368,12 +407,17 @@ const logoutFunc = function () {
 logout.addEventListener(('click'), logoutFunc)
 
 
-help.addEventListener('click', ()=>{
-modal.setAttribute('class','modal-visible');
-modal.style.display="block";
+help.addEventListener('click', () => {
+    modal.setAttribute('class', 'modal-visible');
+    modal.style.display = "block";
 })
 
-modalBtn.addEventListener('click',()=>{
-modal.removeAttribute('class','modal-visible');
-modal.style.display="none";
+modalBtn.addEventListener('click', () => {
+    modal.removeAttribute('class', 'modal-visible');
+    modal.style.display = "none";
 })
+
+window.addEventListener("beforeunload", (e) => {
+    e.preventDefault();
+    alert('Sure to refresh');
+});

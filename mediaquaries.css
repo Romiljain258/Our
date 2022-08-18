@@ -1,0 +1,51 @@
+@media (max-width: 1000px) {
+	.layout {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .left-layout{
+        width: 100%;
+        }
+        
+        .right-layout{
+        width: 100%;
+        }
+
+        .transfer-money {
+            height: 150px;
+            width: 100%;
+        }
+
+        .ask-loan {
+            height: 150px;
+            width: 100%;
+        }
+
+        .delete-account {
+            height: 150px;
+            width: 100%;
+        }
+
+        .modal-box {
+            min-width: 450px;
+        }
+        .modal-visible {
+            position:fixed;
+        }
+
+}
+
+@media (max-width: 480px) {
+	.movements_row {
+        display: flex;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+    }
+    .movements_number{
+        display: none;
+    }
+    body{
+        min-width: 460px;
+    }
+}

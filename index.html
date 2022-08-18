@@ -4,11 +4,14 @@
 <head>
     <title>Our IN Bank</title>
     <link rel="icon" type="image/x-icon" href="diamond.png">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width" initial-scale="1.0" />
     <link rel="stylesheet" href="mycss.css" />
+    <link rel="stylesheet" href="mediaquaries.css"/>
 </head>
 
 <body>
+    <!-- for notification: cntrl+commnd+space, windows: windowskey + dot -->
     <div class="form-parent">
         <span class="form-errorMsg">You have entered wrong password!</span>
         <div class="form-subparent">
@@ -18,11 +21,11 @@
                     required />
                 <br />
                 <input class="form-right input-password" id="password" type="password" placeholder="Enter Pin"
-                    required />
+                      equired />
                 <br />
                 <button class="form-right form-btn" type="submit">Login</button>
             </form>
-            <span class="help">?</span>
+            <span class="help">Help</span>
         </div>
 
     </div>
@@ -37,7 +40,7 @@
 
             <div class="layout">
 
-                <div>
+                <div class="left-layout">
                     <!-- Right side interface-->
 
                     <!-- Transfer money-->
@@ -90,7 +93,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="right-layout">
                     <!---- user info ----->
                     <div class="activeAccountBalance1">
                         Total Balance: <span class="activeAccountBalance">20000</span>
@@ -109,15 +112,15 @@
                     <!---- total summary ----->
                     <div class="summary">
                         <div>
-                            <span>Deposits</span>
+                            <span >DEPOSIT</span>
                             <span class="deposit">1</span>
                         </div>
                         <div>
-                            <span>Withdraws</span>
+                            <span >WITHDRAW</span>
                             <span class="withdraw">-2</span>
                         </div>
                         <div>
-                            <span>Intrest</span>
+                            <span >INTEREST</span>
                             <span class="intrest"></span>
                         </div>
                     </div>
@@ -152,12 +155,11 @@
         </div>
     </div>
 
-    <!-- notifcation -->
+    <!-- notification pop-up -->
 
     <div class="notification">
     <span class="notification-inner"></span>
     </div>
-
     <script src="myjs.js"></script>
 </body>
 
